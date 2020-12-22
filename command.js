@@ -1,5 +1,5 @@
-// const {prefixe} = require(process.env.prefix);
-const {prefix} = require('./config.json');
+const {prefixe} = require(process.env.prefix);
+// const {prefix} = require('./config.json');
 
 // ['ping','test']
 
@@ -14,7 +14,7 @@ module.exports = (client, aliases, callback) =>{
         const {content} = message;
 
         aliases.forEach(alias => {
-            const command = `${prefix}${alias}`
+            const command = `${prefixe}${alias}`
 
             if(content.startsWith(`${command} `)|| content === command){
                 console.log(`Running the command ${command}`)
