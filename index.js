@@ -12,11 +12,22 @@ client.on('ready',() => {
         message.channel.send('Pongo!');
     })
 
+    // list the members of the server
     command(client,'servers',message=>{
         client.guilds.cache.forEach((guild) => {
             console.log(guild);
             message.channel.send(`${guild.name} has a total of ${guild.memberCount} members`);
         })
+    })
+
+    // delete recent messages on the channel
+    command(client,['cc','clear'],(message) => {
+        if(message.member.hasPermission('ADMINISTRATOR')) {
+            message.channel.messages.fetch().then((results) => {
+                console.log(results); // get all the messages
+                message.channel.bulkDelete(results);
+            })
+        }
     })
 })
 
