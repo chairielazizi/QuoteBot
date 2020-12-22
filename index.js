@@ -29,6 +29,19 @@ client.on('ready',() => {
             })
         }
     })
+
+    // set the status of the bot
+    command(client,'status',message => {
+        const content = message.content.replace('!status','');
+
+        // "!status hello world" -> "hello world"
+        client.user.setPresence({
+            activity:{
+                name: content,
+                type: 0,
+            },
+        })
+    })
 })
 
 client.login(config.token);
