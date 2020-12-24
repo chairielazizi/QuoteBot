@@ -2,8 +2,10 @@
 // export const token = process.env[token];
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require("./config.json");
+
+// const config = require("./config.json");
 const command = require('./command');
+const firstMessage = require("./first-message")
 
 client.on('ready',() => {
     console.log("The client is ready");
@@ -42,7 +44,12 @@ client.on('ready',() => {
             },
         })
     })
+
+
+    firstMessage(client,'791078758572490763','halu',['😍','😁','🐱‍🐉','🎉'])
+
+
 })
 
-client.login(config.token);
+// client.login(config.token);
 client.login(process.env.token);
