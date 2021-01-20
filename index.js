@@ -3,7 +3,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-// const config = require("./config.json");
+const config = require("./config.json");
 const command = require('./command');
 const firstMessage = require("./first-message")
 
@@ -46,10 +46,10 @@ client.on('ready',() => {
     })
 
 
-    firstMessage(client,'791078758572490763','halu',['😍','😁','🐱‍🐉','🎉'])
+    firstMessage(client,'791078758572490763','haluu',['😍','😁','🐱‍🐉','🎉'])
 
 
 })
 
-// client.login(config.token);
-client.login(process.env.token);
+client.login(config.token);
+// client.login(process.env.token);

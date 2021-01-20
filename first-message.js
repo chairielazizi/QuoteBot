@@ -1,8 +1,8 @@
-const addReactions = (message, reaction) =>{
+const addReactions = (message, reactions) =>{
     message.react(reactions[0])
-    reactions.shift() // move the 0 index to te left
+    reactions.shift() // move the 0 index to the left
     if(reactions.length > 0){
-        setTimeout(() => addReactions(message,reaction), 750) //milisecond
+        setTimeout(() => addReactions(message,reactions), 750) //milisecond
     }
 }
 
@@ -17,6 +17,10 @@ module.exports = async(client,id,text,reactions = []) => {
             })
         } else{
             // edit existing message
+            for (const message of messages) {
+                message[1].edit(text)
+                addReactions(message[1], reactions)
+            }
         }
     })
 }
