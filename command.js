@@ -1,4 +1,4 @@
-const { prefix } = require(process.env.prefix);
+// const { prefix } = require(process.env.prefix);
 // const { prefix } = require("./config.json");
 
 // ['ping','test']
@@ -6,7 +6,7 @@ const { prefix } = require(process.env.prefix);
 // ['ping']
 
 module.exports = (client, aliases, callback) => {
-  //   const prefix = "!";
+  const prefix = "!";
   if (typeof aliases === "string") {
     aliases = [aliases];
   }
