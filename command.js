@@ -1,5 +1,5 @@
-// const {prefix} = require(process.env.prefix);
-const { prefix } = require("./config.json");
+const { prefix } = require(process.env.prefix);
+// const { prefix } = require("./config.json");
 
 // ['ping','test']
 

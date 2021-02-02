@@ -4,31 +4,32 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const fetch = require("node-fetch");
 
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var request = new XMLHttpRequest();
+// does not manage to fetch the data using the XMLHttpRequest
+// var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+// var request = new XMLHttpRequest();
 
-function getQuote() {
-  var quote;
-  request.open("GET", "https://zenquotes.io/api/random", true);
-  request.responseType = "json";
-  request.onload = function () {
-    // begin acessing JSON data here
-    var status = request.status;
-    if (status == 200) {
-      console.log(request.response);
-    } else {
-      console.log(error);
-    }
-    var data = JSON.parse(this.responseText);
-    // var data = request.response;
-    console.log(data);
-    quote = data[0].q + data[0].a;
-    // quote = JSONStringify(data.q) + " -" + JSONStringify(data.a)
-    request.send();
-  };
+// function getQuote() {
+//   var quote;
+//   request.open("GET", "https://zenquotes.io/api/random", true);
+//   request.responseType = "json";
+//   request.onload = function () {
+//     // begin acessing JSON data here
+//     var status = request.status;
+//     if (status == 200) {
+//       console.log(request.response);
+//     } else {
+//       console.log(error);
+//     }
+//     var data = JSON.parse(this.responseText);
+//     // var data = request.response;
+//     console.log(data);
+//     quote = data[0].q + data[0].a;
+//     // quote = JSONStringify(data.q) + " -" + JSONStringify(data.a)
+//     request.send();
+//   };
 
-  return quote;
-}
+//   return quote;
+// }
 
 fetch("https://zenquotes.io/api/random")
   .then((res) => res.json())
@@ -39,6 +40,7 @@ fetch("https://zenquotes.io/api/random")
   })
   .catch((err) => console.log(err));
 
+// start to fetch the api from zenquote
 const url = "https://zenquotes.io/api/random";
 async function get(url) {
   // Storing response
@@ -66,6 +68,12 @@ client.on("ready", async () => {
     // await console.log(quote);
     await message.channel.send(quote);
   });
+
+  setInterval(async () => {
+    var channel = client.channels.cache.get("806020201682042921");
+    quote = await get(url);
+    channel.send(quote);
+  }, "28800000");
 
   command(client, ["ping", "test"], (message) => {
     message.channel.send("Pongo!");
