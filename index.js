@@ -54,7 +54,7 @@ async function get(url) {
   return output;
 }
 
-const config = require("./config.json");
+// const config = require("./config.json");
 const command = require("./command");
 // const firstMessage = require("./first-message");
 const privateMessage = require("./private-message");
@@ -124,5 +124,5 @@ client.on("ready", async () => {
   });
 });
 
-client.login(config.token);
-// client.login(process.env.token);
+// client.login(config.token);
+client.login(process.env.token);
